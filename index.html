@@ -3,308 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redxon Portfolio</title>
+    <title>Red Sun - App Builder</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            color: #333;
-            background-color: orange;
-            line-height: 1.6;
             margin: 0;
             padding: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #e3f2fd;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
-            background: linear-gradient(to right, rgba(192, 3, 3, 0.63), orange);
+            background-color: #3949ab;
             color: white;
-            padding: 1rem 0;
+            padding: 1rem;
             text-align: center;
-            font-size: 1.5rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .categories, .app-type-btn {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        button {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .app-type-btn button {
+            background-color: #8e24aa;
+            color: white;
+        }
+
+        .category-btn {
+            background-color: #1e88e5;
+            color: white;
+        }
+
+        #start-over {
+            background-color: #e53935;
+            color: white;
         }
 
         footer {
-            background: linear-gradient(to right, orange, red);
-            color: white;
             text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-
-        .portfolio {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: linear-gradient(to bottom right, rgba(20, 4, 250, 0.747), rgb(255, 0, 0));
-            padding: 2rem;
-            color: white;
-            position: relative;
-        }
-
-        .portfolio-content {
-            flex: 1;
-            margin-right: 2rem;
-        }
-
-        .portfolio-content h1 {
-            font-size: 3rem;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-content p {
-            font-size: 1.2rem;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-content .intro {
-            font-size: 0.9rem;
-            color: white;
-        }
-
-        .portfolio-grid {
-            flex: 1;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            position: relative;
-        }
-
-        .portfolio-item {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 8px;
             padding: 1rem;
-            width: calc(33.333% - 2rem);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-
-        .portfolio-item h3 {
-            color: red;
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-item p {
-            font-size: 0.9rem;
-            color: #333;
-        }
-
-        .profile-picture {
-            flex: 1;
-            text-align: center;
-        }
-
-        .profile-picture img {
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-            border: 5px solid white;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .container {
-            width: 90%;
-            margin: 0 auto;
-            padding: 2rem 0;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            color: red;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin: 1rem 0;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
-            margin: 1rem 0;
-            background: orange;
+            background-color: #212121;
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
         }
 
-        .button:hover {
-            background: red;
-        }
-
-        .categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .category {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1rem;
-            width: calc(33.333% - 2rem);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            background: white;
-        }
-
-        .category h3 {
-            margin-bottom: 0.5rem;
-            color: red;
-        }
-
-        .category p {
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            text-align: center;
-        }
-
-        .popup h3 {
-            margin-bottom: 1rem;
-        }
-
-        .popup ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .popup ul li {
-            margin: 0.5rem 0;
-        }
-
-        .popup ul li a {
-            color: red;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .popup ul li a:hover {
-            text-decoration: underline;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        iframe {
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+            max-width: 100%;
+            height: 500px;
+            border: none;
+            margin-top: 2rem;
         }
 
-        @keyframes fadeIn {
+        @media (max-width: 768px) {
+            button {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+            }
+
+            iframe {
+                height: 300px;
+            }
+        }
+
+        .neon-border {
+            border: 2px solid transparent;
+            border-radius: 10px;
+            background: linear-gradient(white, white) padding-box, 
+                        linear-gradient(135deg, #ff6f61, #42a5f5) border-box;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
             from {
-                opacity: 0;
+                box-shadow: 0 0 10px #ff6f61, 0 0 20px #42a5f5;
             }
             to {
-                opacity: 1;
+                box-shadow: 0 0 20px #ff6f61, 0 0 40px #42a5f5;
             }
         }
 
-        .portfolio, .hero {
-            animation: fadeIn 2s ease;
+        #floating-action {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #ff6f61, #42a5f5);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const appTypeButtons = document.querySelectorAll('.app-type-btn');
+            const categorySelection = document.getElementById('category-selection');
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const categoryDetails = document.getElementById('category-details');
+            const categoryDescription = document.getElementById('category-description');
+            const startOverButton = document.getElementById('start-over');
+            const floatingActionButton = document.getElementById('floating-action');
+
+            const descriptions = {
+                accounting: 'Manage your finances and keep track of accounts with ease.',
+                gaming: 'Create an immersive gaming experience for your users.',
+                shopping: 'Develop a seamless shopping platform for your customers.',
+                education: 'Build educational tools to make learning fun and interactive.',
+                social: 'Connect people with a robust social media app.',
+                health: 'Promote health and fitness with a personalized app.',
+            };
+
+            appTypeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categorySelection.classList.remove('hidden');
+                });
+            });
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.dataset.category;
+                    categoryDescription.textContent = descriptions[category];
+                    categoryDetails.classList.remove('hidden');
+                    categorySelection.classList.add('hidden');
+                });
+            });
+
+            startOverButton.addEventListener('click', () => {
+                categoryDetails.classList.add('hidden');
+                categorySelection.classList.add('hidden');
+            });
+
+            floatingActionButton.addEventListener('click', () => {
+                alert('Welcome to Red Sun! We are here to help you build amazing apps.');
+            });
+        });
+    </script>
 </head>
 <body>
-    <header>Redxon</header>
+    <header>
+        <h1>Red Sun - Build Your App</h1>
+    </header>
+    <main>
+        <section id="app-type-selection">
+            <h2>Choose the Type of App</h2>
+            <button class="app-type-btn neon-border" data-type="android">Android</button>
+            <button class="app-type-btn neon-border" data-type="ios">iOS</button>
+        </section>
 
-    <div class="portfolio">
-        <div class="portfolio-content">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Discover my journey and creative works.</p>
-            <p class="intro">With years of experience in various projects, my portfolio reflects innovation, dedication, and a commitment to excellence. Explore the highlights of my work below.</p>
-        </div>
-        <div class="profile-picture">
-            <img src="1544709222116.jpg" alt="Your Profile Picture">
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="hero">
-            <h1>Design Your App with Ease</h1>
-            <p>Choose the type of app you want to create and start building today!</p>
-            <a href="#" class="button" onclick="showPopup()">Get Started</a>
-        </div>
-
-        <div class="categories">
-            <div class="category">
-                <h3>Accounting</h3>
-                <p>Manage finances, track expenses, and more.</p>
+        <section id="category-selection" class="hidden">
+            <h2>Select an App Category</h2>
+            <div class="categories">
+                <button class="category-btn neon-border" data-category="accounting">Accounting</button>
+                <button class="category-btn neon-border" data-category="gaming">Gaming</button>
+                <button class="category-btn neon-border" data-category="shopping">Shopping</button>
+                <button class="category-btn neon-border" data-category="education">Education</button>
+                <button class="category-btn neon-border" data-category="social">Social Media</button>
+                <button class="category-btn neon-border" data-category="health">Health & Fitness</button>
             </div>
-            <div class="category">
-                <h3>Gaming</h3>
-                <p>Create engaging and interactive games.</p>
-            </div>
-            <div class="category">
-                <h3>Shopping</h3>
-                <p>Build e-commerce platforms for online stores.</p>
-            </div>
-            <div class="category">
-                <h3>Health & Fitness</h3>
-                <p>Design apps for workouts, nutrition, and health tracking.</p>
-            </div>
-            <div class="category">
-                <h3>Education</h3>
-                <p>Develop e-learning and skill-building platforms.</p>
-            </div>
-            <div class="category">
-                <h3>Social Media</h3>
-                <p>Connect people with innovative social platforms.</p>
-            </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="overlay" id="overlay" onclick="closePopup()"></div>
+        <section id="category-details" class="hidden">
+            <h2>Category Details</h2>
+            <p id="category-description"></p>
+            <button id="start-over" class="neon-border">Start Over</button>
+        </section>
 
-    <div class="popup" id="popup">
-        <h3>Select Your Platform</h3>
-        <ul>
-            <li><a href="#">Android</a></li>
-            <li><a href="#">iOS</a></li>
-        </ul>
-    </div>
+        <section id="facebook-embed">
+            <h2>Your Facebook Profile</h2>
+            <iframe src="https://www.facebook.com"></iframe>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Red Sun. All rights reserved.</p>
+    </footer>
 
-    <footer>Redxon © 2024. All rights reserved.</footer>
-
-    <script>
-        function showPopup() {
-            document.getElementById('popup').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-    </script>
+    <div id="floating-action">+</div>
 </body>
 </html>
