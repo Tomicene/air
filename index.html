@@ -3,127 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Sun - App Builder</title>
+    <title>Tap Game</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #e3f2fd;
             display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: #3949ab;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        main {
-            padding: 2rem;
-            flex: 1;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .categories, .app-type-btn {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
             justify-content: center;
-            margin: 1rem 0;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
-        button {
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            color: white;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        .app-type-btn button {
-            background-color: #8e24aa;
-        }
-
-        .category-btn {
-            background-color: #1e88e5;
-        }
-
-        #start-over {
-            background-color: #e53935;
-        }
-
-        footer {
+        .game-container {
             text-align: center;
-            padding: 1rem;
-            background-color: #212121;
-            color: white;
-        }
-
-        iframe {
+            position: relative;
             width: 100%;
-            max-width: 100%;
-            height: 500px;
-            border: none;
-            margin-top: 2rem;
+            height: 100%;
         }
 
-        @media (max-width: 768px) {
-            button {
-                font-size: 0.9rem;
-                padding: 0.5rem 1rem;
-            }
-
-            iframe {
-                height: 300px;
-            }
-        }
-
-        .neon-border {
-            border: 2px solid transparent;
-            border-radius: 10px;
-            background: linear-gradient(white, white) padding-box, 
-                        linear-gradient(135deg, #ff6f61, #42a5f5) border-box;
-            animation: glow 1.5s infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 10px #ff6f61, 0 0 20px #42a5f5;
-            }
-            to {
-                box-shadow: 0 0 20px #ff6f61, 0 0 40px #42a5f5;
-            }
-        }
-
-        #floating-action {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: linear-gradient(135deg, #ff6f61, #42a5f5);
+        .tap-circle {
+            width: 100px;
+            height: 100px;
+            background: #ff6f61;
             color: white;
-            padding: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
             border-radius: 50%;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            z-index: 1000;
-            animation: pulse 2s infinite;
+            position: absolute;
+            animation: pulse 1s infinite;
         }
 
         @keyframes pulse {
@@ -137,90 +51,96 @@
                 transform: scale(1);
             }
         }
+
+        .celebration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ffeb3b;
+            font-size: 3rem;
+            font-weight: bold;
+            z-index: 100;
+        }
+
+        #score {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const appTypeButtons = document.querySelectorAll('.app-type-btn');
-            const categorySelection = document.getElementById('category-selection');
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            const categoryDetails = document.getElementById('category-details');
-            const categoryDescription = document.getElementById('category-description');
-            const startOverButton = document.getElementById('start-over');
-            const floatingActionButton = document.getElementById('floating-action');
-
-            const descriptions = {
-                accounting: 'Manage your finances and keep track of accounts with ease.',
-                gaming: 'Create an immersive gaming experience for your users.',
-                shopping: 'Develop a seamless shopping platform for your customers.',
-                education: 'Build educational tools to make learning fun and interactive.',
-                social: 'Connect people with a robust social media app.',
-                health: 'Promote health and fitness with a personalized app.',
-            };
-
-            appTypeButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    categorySelection.classList.remove('hidden');
-                });
-            });
-
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const category = button.dataset.category;
-                    categoryDescription.textContent = descriptions[category];
-                    categoryDetails.classList.remove('hidden');
-                    categorySelection.classList.add('hidden');
-                });
-            });
-
-            startOverButton.addEventListener('click', () => {
-                categoryDetails.classList.add('hidden');
-                categorySelection.classList.add('hidden');
-            });
-
-            floatingActionButton.addEventListener('click', () => {
-                alert('Welcome to Red Sun! We are here to help you build amazing apps.');
-            });
-        });
-    </script>
 </head>
 <body>
-    <header>
-        <h1>Red Sun - Build Your App</h1>
-    </header>
-    <main>
-        <section id="app-type-selection">
-            <h2>Choose the Type of App</h2>
-            <button class="app-type-btn neon-border" data-type="android">Android</button>
-            <button class="app-type-btn neon-border" data-type="ios">iOS</button>
-        </section>
+    <div class="game-container">
+        <div id="score">Score: 0</div>
+        <div class="tap-circle" id="tap-circle">M</div>
+    </div>
 
-        <section id="category-selection" class="hidden">
-            <h2>Select an App Category</h2>
-            <div class="categories">
-                <button class="category-btn neon-border" data-category="accounting">Accounting</button>
-                <button class="category-btn neon-border" data-category="gaming">Gaming</button>
-                <button class="category-btn neon-border" data-category="shopping">Shopping</button>
-                <button class="category-btn neon-border" data-category="education">Education</button>
-                <button class="category-btn neon-border" data-category="social">Social Media</button>
-                <button class="category-btn neon-border" data-category="health">Health & Fitness</button>
-            </div>
-        </section>
+    <script>
+        let score = 0;
+        const tapCircle = document.getElementById('tap-circle');
+        const scoreDisplay = document.getElementById('score');
 
-        <section id="category-details" class="hidden">
-            <h2>Category Details</h2>
-            <p id="category-description"></p>
-            <button id="start-over" class="neon-border">Start Over</button>
-        </section>
+        // Load score from local storage
+        function loadScore() {
+            const savedScore = localStorage.getItem('tapGameScore');
+            if (savedScore) {
+                score = parseInt(savedScore, 10);
+                scoreDisplay.innerText = `Score: ${score}`;
+            }
+        }
 
-        <section id="facebook-embed">
-            <h2>Your Facebook Profile</h2>
-            <p>Facebook content cannot be embedded due to restrictions. Visit <a href="https://www.facebook.com" target="_blank">Facebook</a> to view your profile.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Red Sun. All rights reserved.</p>
-    </footer>
+        // Save score to local storage
+        function saveScore() {
+            localStorage.setItem('tapGameScore', score);
+        }
 
-    <div id="floating-action">+</div>
+        function randomPosition() {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            return { x, y };
+        }
+
+        function updatePosition() {
+            const { x, y } = randomPosition();
+            tapCircle.style.left = `${x}px`;
+            tapCircle.style.top = `${y}px`;
+        }
+
+        function celebrate() {
+            const celebration = document.createElement('div');
+            celebration.className = 'celebration';
+            celebration.innerText = '🎉 Breakthrough! 🎉';
+            document.body.appendChild(celebration);
+            setTimeout(() => {
+                celebration.remove();
+            }, 2000);
+        }
+
+        tapCircle.addEventListener('click', () => {
+            score++;
+            scoreDisplay.innerText = `Score: ${score}`;
+            updatePosition();
+            saveScore();
+
+            if (score % 100 === 0) {
+                celebrate();
+            }
+        });
+
+        // Initialize game
+        loadScore();
+        updatePosition();
+    </script>
 </body>
 </html>
