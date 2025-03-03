@@ -1,0 +1,205 @@
+body{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(57, 57, 59);
+    color: azure;
+}
+#image{
+    margin-top: 50PX;
+    height: 300px;
+    width: 300px;
+    border-radius: 400px;
+    align-self: center;
+    justify-self: center;
+    margin-bottom: auto;
+}
+.des{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    font-size: 44px;
+}
+#bit{
+    color: darkgoldenrod;
+    background-color: rgb(0, 0, 0);
+    
+}
+#contain{
+    margin-top: 20px;
+    height: 570px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 13px; 
+    border: 2px solid darkgoldenrod;
+    border-left: 2px solid white;
+    border-right: 2px solid darkgoldenrod;
+    border-top: 2px rgb(241, 241, 241) solid;
+}
+.stat{
+    margin: 2px;
+}
+.stats{
+    height: 15px;
+    background-color: rgb(0, 0, 0);
+    width: fit-content;
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    padding: 4px;
+    margin-left: 9px;
+    margin-right: 9px;
+    border-radius: 9px;
+    margin-top: 8px;
+    border: 1px solid darkgoldenrod;
+    border-left: 1px solid white;
+    border-right: 1px solid darkgoldenrod;
+    border-top: 1px rgb(241, 241, 241) solid;
+}
+#toppanel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    background-color: rgb(0, 0, 0);
+    height: 10%;
+    gap: 1px;
+    border-bottom: 6px;
+
+}
+li{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    margin: 0;
+}
+.container{
+    background-color: rgb(0, 0, 0);
+    width: 350px;
+    height: 99vh;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    margin-bottom: 4px;
+}
+#tap_area{
+    align-self: center;
+    justify-self: center;
+}
+#image:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.bbtn{
+    list-style: none;
+    text-decoration: none;
+    background-color: black;
+    width: 140%;
+    text-align: center;
+    color: white;
+    height: 20px;
+}
+#bottompanel{
+    margin-top: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 4%;
+    margin-right: 4%;
+    list-style: none;
+    height: 5%;
+}
+#taskarea{
+    margin-top: 2vh;
+    margin-left: 0.5px;
+    padding: 20px;
+    height: fit-content;
+    width: 300px;
+    border-radius: 6px;
+    text-align: center;
+}
+#tt{
+text-align: center;
+}
+#taska{
+    text-align: left;
+    background-color: rgb(20, 20, 20);
+    margin-top: 2vh;
+    width: 290px;
+    height: fit-content;
+    padding: 8px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 2px rgb(230, 128, 3) ;
+}
+#taskb{
+    text-align: left;
+    background-color: rgb(20, 20, 20);
+    margin-top: 2vh;
+    width: 290px;
+    height: fit-content;
+    padding: 8px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 2px rgb(230, 128, 3) ;
+}
+#taskc{
+    text-align: center;
+    background-color: rgb(20, 20, 20);
+    margin-top: 2vh;
+    width: 135px;
+    height: fit-content;
+    padding: 8px;
+    border-radius: 6px;
+}
+#thg{
+display: flex;
+gap: 10px;
+justify-content: center;
+margin-left: 4px;
+}
+#taskaa{
+    display: none;
+}
+.busb{
+    max-width: 80px;
+    background-color: rgb(20, 20, 20);
+    border: 1px solid black;
+    border-radius: 6px;
+    box-shadow: 0 0 2px rgb(244, 148, 3);
+    padding: 4px;
+    margin: 1px auto;
+    text-align: center;
+}
+.cimg{
+    width: 50px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+}
+.cnt{
+    padding: 8px;
+}
+.cbtn{
+    background-color: orangered;
+    color: #fff;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1px;
+}
+.cbtn:hover{
+    background-color: orange;
+}
+.tct{
+    margin: 0%;
+    color: orangered;
+}
+.cont{
+    max-width: 280px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 25px;
+    margin-top: 100px;
+    margin-left: 14px;
+}

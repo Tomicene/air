@@ -1,0 +1,38 @@
+body{
+    height: 100vh;
+    background: linear-gradient(to top right, red, cyan);
+    background-size: cover;
+}
+.inp{
+    position: absolute;
+   width: 10.5vw;
+   display: grid;
+   margin: 0 auto;
+   padding: 10px;
+   border-radius: 1px;
+   left: 5vw;
+   top: 25vh;
+   border: 2px solid black;
+}
+.in{
+    width: 9.5vw;
+    height: 2vh;
+    margin-top: 0.5vh;
+}
+#in{
+    width: 10vw;
+    height: 2vh;
+    margin-top: 0.5vh;
+}
+#playerc{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    max-height: 9vh;
+    width: 75vw;
+    gap: 3vw;
+    top: 65vh;
+    margin-left: 13vw;
+
+}
+

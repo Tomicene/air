@@ -1,0 +1,79 @@
+body{
+    font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+    background-color: rgb(28, 28, 29);
+    color: azure;
+}
+#image{
+    height: 345px;
+    width: 345px;
+    border-radius: 400px;
+    align-self: center;
+    justify-self: center;
+    margin-bottom: auto;
+}
+.des{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    font-size: 44px;
+}
+#bit{
+    color: darkgoldenrod;
+    background-color: rgb(34, 33, 33);
+    
+}
+#contain{
+    margin-top: 5px;
+    height: 80%;
+    background-color: rgb(0, 0, 0);
+    border-radius: 13px; 
+}
+.stat{
+    margin: 2px;
+}
+.stats{
+    height: 15px;
+    background-color: darkgoldenrod;
+    width: fit-content;
+    margin-left: 4px;
+    color: black;
+    border: 2px solid darkgoldenrod;
+    padding: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+    border-radius: 11px;
+    margin-top: 15px;
+    
+}
+#toppanel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    border: 2px solid rgb(28, 27, 27);
+    background-color: rgb(34, 33, 33);
+    height: 10%;
+    gap: 1px;
+}
+li{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    margin: 0;
+}
+.container{
+    background-color: darkgoldenrod;
+    width: 350px;
+    height: 99vh;
+    border: 3px solid rgb(255, 153, 0);
+    border-radius: 15px;
+}
+#tap_area{
+    align-self: center;
+    justify-self: center;
+}

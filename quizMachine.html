@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz score counter</title>
+    <link rel="stylesheet" href="qstyle.css">
+
+</head>
+<body>
+    <!-- input section -->
+        <div class="inp">
+            <div class="inps">
+                <input type="text" placeholder="name" id="namein1" class="in">
+                <button class="bb" onclick="add1()">+</button>
+            </div>
+            <div class="inps">
+                <input type="text" placeholder="name" id="namein2" class="in">
+                <button class="bb" onclick="add2()">+</button>
+            </div>
+            <div class="inps">
+                <input type="text" placeholder="name" id="namein3" class="in">
+                <button class="bb" onclick="add3()">+</button>
+            </div>
+            <div class="inps">
+                <input type="text" placeholder="name" id="namein4" class="in">
+                <button class="bb" onclick="add4()">+</button>
+            </div>
+            <div class="inps">
+                <input type="text" placeholder="name" id="namein5" class="in">
+                <button class="bb" onclick="add5()">+</button>
+            </div>
+            <div class="inps">
+                <input type="text" placeholder="name" id="namein6" class="in">
+                <button class="bb" onclick="add6()">+</button>
+            </div>
+            <div class="inps">
+                <input type="text" placeholder="name" id="namein7" class="in">
+                <button class="bb" onclick="add7()">+</button>
+            </div>
+            <div class="inps">
+                <input type="text" placeholder="name" id="namein8" class="in">
+                <button class="bb" onclick="add8()">+</button>
+            </div>
+            <div class="inps">
+                <input type="text" placeholder="name" id="namein9" class="in">
+                <button class="bb" onclick="add9()">+</button>
+            </div>
+            <input type="text" placeholder="increment" id="inment" onsubmit="inment= document.getElementById('inment')">
+        </div>
+    <!-- main section -->
+    <div id="playerc">
+        <div id="player1" class="bttn">
+            <h1 id="named1"></h1>
+            <h2 id="score1"></h2>
+            <button id="add" onclick="incr1()">+</button>
+            <button type="button" id="subt" onclick="redc1()">-</button>
+        </div>
+        <div id="player2" class="bttn">
+            <h1 id="named2"></h1>
+            <h2 id="score2"></h2>
+            <button id="add" onclick="incr2()">+</button>
+            <button type="button" id="subt" onclick="redc2()">-</button>
+        </div>
+        <div id="player3" class="bttn">
+            <h1 id="named3"></h1>
+            <h2 id="score3"></h2>
+            <button id="add" onclick="incr3()">+</button>
+            <button type="button" id="subt" onclick="redc3()">-</button>
+        </div>
+        <div id="player4" class="bttn">
+            <h1 id="named4"></h1>
+            <h2 id="score4"></h2>
+            <button id="add" onclick="incr4()">+</button>
+            <button type="button" id="subt" onclick="redc4()">-</button>
+        </div>
+        <div id="player5" class="bttn">
+            <h1 id="named5"></h1>
+            <h2 id="score5"></h2>
+            <button id="add" onclick="incr5()">+</button>
+            <button type="button" id="subt" onclick="redc5()">-</button>
+        </div>
+        <div id="player6" class="bttn">
+            <h1 id="named6"></h1>
+            <h2 id="score6"></h2>
+            <button id="add" onclick="incr6()">+</button>
+            <button type="button" id="subt" onclick="redc6()">-</button>
+        </div>
+        <div id="player7" class="bttn">
+            <h1 id="named7"></h1>
+            <h2 id="score7"></h2>
+            <button id="add" onclick="incr7()">+</button>
+            <button type="button" id="subt" onclick="redc7()">-</button>
+        </div>
+        <div id="player8" class="bttn">
+            <h1 id="named8"></h1>
+            <h2 id="score8"></h2>
+            <button id="add" onclick="incr8()">+</button>
+            <button type="button" id="subt" onclick="redc8()">-</button>
+        </div>
+        <div id="player9" class="bttn">
+            <h1 id="named9"></h1>
+            <h2 id="score9"></h2>
+            <button id="add" onclick="incr9()">+</button>
+            <button type="button" id="subt" onclick="redc9()">-</button>
+        </div>
+    </div>
+    <script src="qscript.js"></script>
+</body>
+</html>
