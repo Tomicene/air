@@ -1,195 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tap Game</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(to bottom, #87CEEB, #f0f8ff); /* Sky gradient */
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .cloud {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            animation: float 10s infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateX(-200px);
-            }
-            50% {
-                transform: translateX(100vw);
-            }
-            100% {
-                transform: translateX(-200px);
-            }
-        }
-
-        .cloud:nth-child(1) {
-            width: 100px;
-            height: 60px;
-            top: 20%;
-            left: 10%;
-            animation-duration: 15s;
-        }
-
-        .cloud:nth-child(2) {
-            width: 150px;
-            height: 90px;
-            top: 40%;
-            left: 30%;
-            animation-duration: 20s;
-        }
-
-        .cloud:nth-child(3) {
-            width: 120px;
-            height: 70px;
-            top: 60%;
-            left: 70%;
-            animation-duration: 18s;
-        }
-
-        .game-container {
-            text-align: center;
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .tap-circle {
-            width: 100px;
-            height: 100px;
-            background: #ff6f61;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            position: absolute;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .celebration {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.8);
-            color: #ffeb3b;
-            font-size: 3rem;
-            font-weight: bold;
-            z-index: 100;
-        }
-
-        #score {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            color: white;
-            font-size: 1.5rem;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-
-    <div class="game-container">
-        <div id="score">Score: 0</div>
-        <div class="tap-circle" id="tap-circle">M</div>
-    </div>
-
-    <script>
-        let score = 0;
-        const tapCircle = document.getElementById('tap-circle');
-        const scoreDisplay = document.getElementById('score');
-
-        // Load score from local storage
-        function loadScore() {
-            const savedScore = localStorage.getItem('tapGameScore');
-            if (savedScore) {
-                score = parseInt(savedScore, 10);
-                scoreDisplay.innerText = `Score: ${score}`;
-            }
-        }
-
-        // Save score to local storage
-        function saveScore() {
-            localStorage.setItem('tapGameScore', score);
-        }
-
-        function randomPosition() {
-            const x = Math.random() * (window.innerWidth - 100);
-            const y = Math.random() * (window.innerHeight - 100);
-            return { x, y };
-        }
-
-        function updatePosition() {
-            const { x, y } = randomPosition();
-            tapCircle.style.left = `${x}px`;
-            tapCircle.style.top = `${y}px`;
-        }
-
-        function celebrate() {
-            const celebration = document.createElement('div');
-            celebration.className = 'celebration';
-            celebration.innerText = '🎉 Breakthrough! 🎉';
-            document.body.appendChild(celebration);
-            setTimeout(() => {
-                celebration.remove();
-            }, 2000);
-        }
-
-        tapCircle.addEventListener('click', () => {
-            score++;
-            scoreDisplay.innerText = `Score: ${score}`;
-            updatePosition();
-            saveScore();
-
-            if (score % 100 === 0) {
-                celebrate();
-            }
-        });
-
-        // Initialize game
-        loadScore();
-        updatePosition();
-    </script>
-</body>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="s.css">
+    </head>
+    <body>
+        <script src="s.js"></script>
+        <div class="container">
+            
+            <div id="toppanel">
+                <strong class="des">MOON <span class="des" id="bit">BIT</span></strong>
+            </div>
+            <div id="home">
+                <div id="contain">
+                    <li><div class="stats"><strong>Username: </strong><span id="username" class="stat">User</span></div><div class="stats"><strong>$MBTc: </strong><span id="score" class="stat">****</span></div></li>
+                    <div id="tap_area" onclick="incr1()">
+                        <img src="coin.jpg" alt="Coin image" onclick="incr1()" id="image">
+                        
+                    </div>
+                </div>
+                <div id="bottompanel">
+                    <li><a href="#tasks" class="bbtn" onclick="tasks()">Tasks</a></li>
+                    <li><a href="#" class="bbtn">Referals</a></li>
+                    <li><a href="#busniess" class="bbtn" onclick="busn()">Busniess</a></li>
+                    <li><a href="#" class="bbtn">Earnings</a></li>
+                </div>
+            </div>
+            <div id="tasks" style="display: none;">
+                <div id="contain">
+                    <li><div class="stats"><strong>Username: </strong><span id="username" class="stat">User</span></div><div class="stats"><strong>$MBTc: </strong><span id="score1" class="stat">****</span></div></li>
+                    <div id="taskarea">
+                        <strong id="tt">Tasks</strong>
+                        <div id="thg">
+                        <div id="taskc" onclick="ott()"><strong>One-Time Tasks</strong></div><div id="taskc" onclick="tlt()"><strong>Time-limited Tasks</strong></div>
+                        </div>
+                        <div id="taskbb">
+                        <div id="taskb"><strong>Task title1</strong><br><br>
+                        <span>task Description:<span> qwertyuiop asdfghjkl cvbnm. wertyuioqp sdfghjkla cvbnm</span></span></div>
+                        <div id="taskb"><strong>Task title2</strong><br><br>
+                        <span>task Description:<span> qwertyuiop asdfghjkl cvbnm. wertyuioqp sdfghjkla cvbnm</span></span></div>
+                        <div id="taskb"><strong>Task title3</strong><br><br>
+                        <span>task Description:<span> qwertyuiop asdfghjkl cvbnm. wertyuioqp sdfghjkla cvbnm</span></span></div>
+                        <div id="taskb"><strong>Task title4</strong><br><br>
+                        <span>task Description:<span> qwertyuiop asdfghjkl cvbnm. wertyuioqp sdfghjkla cvbnm</span></span></div>
+                        <div id="taskb"><strong>Task title5</strong><br><br>
+                        <span>task Description:<span> qwertyuiop asdfghjkl cvbnm. wertyuioqp sdfghjkla cvbnm</span></span></div>
+                        </div>
+                        <div id="taskaa">
+                        <div id="taska"><strong>Task title</strong><br><br>
+                        <span>task Description:<span> qwertyuiop asdfghjkl cvbnm. wertyuioqp sdfghjkla cvbnm</span></span></div>
+                        <div id="taska"><strong>Task title</strong><br><br>
+                        <span>task Description:<span> qwertyuiop asdfghjkl cvbnm. wertyuioqp sdfghjkla cvbnm</span></span></div>
+                        <div id="taska"><strong>Task title</strong><br><br>
+                        <span>task Description:<span> qwertyuiop asdfghjkl cvbnm. wertyuioqp sdfghjkla cvbnm</span></span></div>
+                        <div id="taska"><strong>Task title</strong><br><br>
+                        <span>task Description:<span> qwertyuiop asdfghjkl cvbnm. wertyuioqp sdfghjkla cvbnm</span></span></div>
+                        <div id="taska"><strong>Task title</strong><br><br>
+                        <span>task Description:<span> qwertyuiop asdfghjkl cvbnm. wertyuioqp sdfghjkla cvbnm</span></span></div>
+                        </div>
+                    </div>    
+                    <div class="tasx">
+                        <div class="task"></div>
+                    </div>
+                </div>
+                <div id="bottompanel">
+                    <li><a href="#home" class="bbtn" onclick="home()">Home</a></li>
+                    <li><a href="#" class="bbtn">Referals</a></li>
+                    <li><a href="#" class="bbtn">Busniess</a></li>
+                    <li><a href="#" class="bbtn">Earnings</a></li>
+                </div>
+            </div>
+            <div id="busniess" style="display: none;">
+                <div id="contain">
+                    <li><div class="stats"><strong>Username: </strong><span id="username" class="stat">User</span></div><div class="stats"><strong>$MBTc: </strong><span id="score1" class="stat">****</span></div></li>
+                    <div class="cont">
+                        <div class="busb">
+                            <img src="car.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="car1.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="car2.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="car0.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="car4.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="car01.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="car7.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="car8.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="car9.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="car6.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="car5.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                        <div class="busb">
+                            <img src="bg4.jpg" alt="" class="cimg">
+                            <div class="cnt">
+                                <h3 class="tct">title</h3>
+                                <button class="cbtn">BUY</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div id="bottompanel">
+                    <li><a href="#" class="bbtn">Tasks</a></li>
+                    <li><a href="#" class="bbtn">Referals</a></li>
+                    <li><a href="#" class="bbtn">Busniess</a></li>
+                    <li><a href="#" class="bbtn">Earnings</a></li>
+                </div>
+            </div>
+            <div id="referals" style="display: none;">
+                <div id="contain">
+                    <li><div class="stats"><strong>Username: </strong><span id="username" class="stat">User</span></div><div class="stats"><strong>$MBTc: </strong><span id="score3" class="stat">NaN</span></div></li>
+                    <div id="tap_area" onclick="incr1()">
+                        <img src="coin.jpg" alt="Coin image" onclick="incr1()" id="image">
+                        
+                    </div>
+                </div>
+                <div id="bottompanel">
+                    <li><a href="#" class="bbtn">Tasks</a></li>
+                    <li><a href="#" class="bbtn">Referals</a></li>
+                    <li><a href="#" class="bbtn">Busniess</a></li>
+                    <li><a href="#" class="bbtn">Earnings</a></li>
+                </div>
+            </div>
+            <div id="earnings" style="display: none;">
+                <div id="contain">
+                    <li><div class="stats"><strong>Username: </strong><span id="username" class="stat">User</span></div><div class="stats"><strong>$MBTc: </strong><span id="score" class="stat">NaN</span></div></li>
+                    <div id="tap_area" onclick="incr1()">
+                        <img src="coin.jpg" alt="Coin image" onclick="incr1()" id="image">
+                        
+                    </div>
+                </div>
+                <div id="bottompanel">
+                    <li><a href="#" class="bbtn">Tasks</a></li>
+                    <li><a href="#" class="bbtn">Referals</a></li>
+                    <li><a href="#" class="bbtn">Busniess</a></li>
+                    <li><a href="#" class="bbtn">Earnings</a></li>
+                </div>
+            </div>
+        </div>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyB8IplJMtaKaW5BsFFZfvNB4RDXepMS5T4",
+              authDomain: "mbtc-27cbd.firebaseapp.com",
+              projectId: "mbtc-27cbd",
+              storageBucket: "mbtc-27cbd.firebasestorage.app",
+              messagingSenderId: "595471191018",
+              appId: "1:595471191018:web:0051d39edea47c0cac0093",
+              measurementId: "G-K0MX65HN51"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+          </script>
+       
+        <script src="s.js"></script>
+    </body>
 </html>
